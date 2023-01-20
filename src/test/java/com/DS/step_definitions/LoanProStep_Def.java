@@ -14,8 +14,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class LoanProStep_Def extends HomePage {
     private WebDriverWait wait = new WebDriverWait(Driver.getDriver(),30 );
 
-
-
     @Given("user in on the login page")
     public void user_in_on_the_login_page() {
         Driver.getDriver().get(ConfigurationReader.getProperty("url"));
