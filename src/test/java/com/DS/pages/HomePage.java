@@ -36,5 +36,5 @@ public abstract class HomePage {
     @FindBy(xpath = "//div[.='6']")
     public WebElement totalLoanResults;
 
-
+//
 }
