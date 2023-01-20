@@ -22,6 +22,7 @@ public class LoanProStep_Def extends HomePage {
         Driver.getDriver().manage().window().maximize();
 
     }
+
     @Then("verify controls displayed")
     public void verify_controls_displayed() {
         assert username.isDisplayed();
@@ -29,6 +30,7 @@ public class LoanProStep_Def extends HomePage {
         assert login.isDisplayed();
 
     }
+
     @When("user login to main page")
     public void user_login_to_main_page() {
         username.sendKeys(ConfigurationReader.getProperty("username"));
@@ -36,6 +38,7 @@ public class LoanProStep_Def extends HomePage {
         login.click();
 
     }
+
     @Then("user verifies correct url")
     public void user_verifies_correct_url() {
         String expectedUrl="https://beta-loanpro.simnang.com/client/app/index.php#/t_/797/loan/menu";
@@ -45,6 +48,7 @@ public class LoanProStep_Def extends HomePage {
         System.out.println("actualUrl = " + actualUrl);
 
     }
+
     @Then("user validates controls on main page")
     public void user_validates_controls_on_main_page() {
         wait.until(ExpectedConditions.visibilityOf(reportBtn4));
@@ -55,29 +59,28 @@ public class LoanProStep_Def extends HomePage {
         assert qaTestingTenant5.isDisplayed();
 
     }
+
     @Then("user searches loans by status “Approved”")
     public void user_searches_loans_by_status_approved() {
         loanStatus.click();
         wait.until(ExpectedConditions.elementToBeClickable(approved));
         approved.click();
-
     }
+
     @Then("user validates loan count with status approved")
     public void user_validates_loan_count_with_status_approved() throws InterruptedException {
         wait.until(ExpectedConditions.visibilityOfAllElements(loansApprovedColumns));
-        Thread.sleep(10000);//  to give extra time for page to load to give total list size
+        Thread.sleep(5000);//  to give extra time for page to load to get total list size
         System.out.println("loansApprovedColumns.size() = " + loansApprovedColumns.size());
         for (WebElement eachApproved : loansApprovedColumns) {
-
+           Assert.assertEquals("Approved",eachApproved.getText());
         }
         int totalLoansApproved=Integer.parseInt(totalLoanResults.getText());
         System.out.println("totalLoansApproved = " + totalLoansApproved);
         Assert.assertEquals(totalLoansApproved,loansApprovedColumns.size());
 
     }
-
-
-    }
+ }
 
 
 
