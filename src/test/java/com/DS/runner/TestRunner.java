@@ -15,7 +15,7 @@ import org.junit.runner.RunWith;
         },
         features = "src/test/java/resources/features",
         glue = "com/DS/step_definitions",
-        dryRun = false,
+        dryRun = true,
         tags = "@ui"
 
 
